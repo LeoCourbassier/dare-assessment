@@ -1,0 +1,51 @@
+{
+  "name": "dare-assessment",
+  "version": "1.0.0",
+  "description": "Insurance API wrapper",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
+    "test:unit": "jest src/**/**/*.test.js",
+    "test:integration": "jest tests/integration/* --passWithNoTests",
+    "test:e2e": "jest tests/e2e/* --passWithNoTests",
+    "test:coverage": "jest --coverage",
+    "test:badges": "npm run test:coverage && jest-coverage-badges"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoCourbassier/dare-assessment.git"
+  },
+  "keywords": [
+    "node",
+    "wrapper",
+    "insurance"
+  ],
+  "author": "Leonardo Courbassier Martins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoCourbassier/dare-assessment/issues"
+  },
+  "homepage": "https://github.com/LeoCourbassier/dare-assessment#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.4",
+    "babel-jest": "^27.0.2",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "jest": "^27.0.4",
+    "jest-coverage-badges": "^1.1.2"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  }
+}
