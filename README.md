@@ -1,4 +1,5 @@
 # Dare Assessment
+[![Node.js CI](https://github.com/LeoCourbassier/dare-assessment/actions/workflows/node.js.yml/badge.svg)](https://github.com/LeoCourbassier/dare-assessment/actions/workflows/node.js.yml)
 ![NPM-v6.3.0](https://img.shields.io/badge/npm-v6.3.0-blue)
 ![NodeLTS](https://img.shields.io/badge/node--lts%40latest-%3E%3D%2014.17.0-brightgreen)
 ![eslint](https://img.shields.io/badge/eslint--config--airbnb--base-%5E14.2.1-blue)
