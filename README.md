@@ -80,3 +80,5 @@ npm run test:coverage
 ---
 ## <a name="decisions" style="text-decoration: inherit;color: inherit; cursor: auto;">Architecture Decision</a>
 To see why some decisions were made, refer to [this folder](./doc/architecture/decisions/).
+
+The used tool to create adr was this [one](https://github.com/npryce/adr-tools).
