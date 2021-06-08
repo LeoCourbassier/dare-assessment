@@ -5,10 +5,10 @@
 ![eslint](https://img.shields.io/badge/eslint--config--airbnb--base-%5E14.2.1-blue)
 
 
-![coverage](./coverage/badge-lines.svg)
-![coverage2](./coverage/badge-branches.svg)
-![coverage3](./coverage/badge-functions.svg)
-![coverage](./coverage/badge-statements.svg)
+![coverage-lines](./coverage/badge-lines.svg)
+![coverage-branches](./coverage/badge-branches.svg)
+![coverage-functions](./coverage/badge-functions.svg)
+![coverage-statements](./coverage/badge-statements.svg)
 
 This project has the objective of showing how it'd be like working with me and my skills.
 
@@ -37,16 +37,42 @@ npm install
 ## Usage
 ### Postman collection
 
+
 ### Running locally
 <details>
   <summary>With Docker</summary>
   
+  First, build the image:
+  ```bash
+  docker build . -t dare
+  ```
+
+  Then run it.
+  ```bash
+  docker run -p 3000:3000 dare
+  ```
+
+  If you want, you can change the listen port using the environment var `PORT`.
 </details>
 
 <details>
   <summary>Without Docker</summary>
   
+  You can use only:
+  ```bash
+  npm start
+  ```
 </details>
+
+---
+
+### Environment variables
+There are a few customizable variables.
+
+* `JWT_SECRET`: the secret that will be used to generate JWT
+* `PORT`: the port that the application will run
+* `CLIENT_ID`: the client_id that will be used to the Insurance API
+* `CLIENT_SECRET`: the client_secret that will be used to the Insurance API
 
 ---
 
