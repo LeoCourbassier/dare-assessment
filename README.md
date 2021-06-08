@@ -84,31 +84,52 @@ There are a few customizable variables.
 ---
 
 ## Tests
+
 To run tests, you can:
-Run all tests with:
-```bash
-npm test
-```
 
-Run unit tests:
-```bash
-npm run test:unit
-```
+<details>
+  <summary>Without Docker</summary>
+  
+  Run all tests with:
+  ```bash
+  npm test
+  ```
 
-Run integration tests:
-```bash
-npm run test:integration
-```
+  Run unit tests:
+  ```bash
+  npm run test:unit
+  ```
 
-Run end-to-end tests:
-```bash
-npm run test:e2e
-```
+  Run integration tests:
+  ```bash
+  npm run test:integration
+  ```
 
-Run test coverage:
-```bash
-npm run test:coverage
-```
+  Run end-to-end tests:
+  ```bash
+  npm run test:e2e
+  ```
+
+  Run test coverage:
+  ```bash
+  npm run test:coverage
+  ```
+</details>
+
+<details>
+  <summary>With Docker</summary>
+  There's only the option to run all the tests with coverage.
+
+  ```bash
+  docker build . -f Dockerfile.test -t dare-test
+  ```
+
+  ```bash
+  docker run dare-test
+  ```
+
+</details>
+
 
 ---
 ## <a name="decisions" style="text-decoration: inherit;color: inherit; cursor: auto;">Architecture Decision</a>
