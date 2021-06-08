@@ -36,7 +36,14 @@ npm install
 ---
 ## Usage
 ### Postman collection
+Please refer to this [folder](./doc/api/postman).
 
+You can import the workspace into your Postman.
+There you will have two environments, one it's called `Dev` which to use you must have the server up and running in your machine.
+
+The other one is the `Prod` environment, which is up to date with the main branch and it's hosted on Heroku.
+
+---
 
 ### Running locally
 <details>
