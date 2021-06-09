@@ -1,4 +1,4 @@
-import PolicyController from '../controllers/policy';
+import PolicyController from '../controllers/policy/policy';
 
 const policiesRoutes = async (fastify, _options) => {
   fastify.get('/',

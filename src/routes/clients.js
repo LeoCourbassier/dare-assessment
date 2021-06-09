@@ -1,4 +1,4 @@
-import ClientController from '../controllers/client';
+import ClientController from '../controllers/client/client';
 
 const clientsRoutes = async (fastify, _options) => {
   fastify.get('/',
