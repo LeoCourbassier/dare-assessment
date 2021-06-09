@@ -107,3 +107,5 @@ dist
 
 # ADR tool (used to create adrs)
 .adr-dir
+
+.vscode
