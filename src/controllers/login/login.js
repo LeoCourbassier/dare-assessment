@@ -1,6 +1,6 @@
-import { BadRequestView, NotFoundView, UnauthorizedView } from '../views/responses/errors';
-import TokenView from '../views/responses/login';
-import Dare from './dare';
+import { BadRequestView, NotFoundView, UnauthorizedView } from '../../views/responses/errors';
+import TokenView from '../../views/responses/login';
+import Dare from '../dare/dare';
 
 const DEFAULT_TOKEN_TTL = 3600;
 

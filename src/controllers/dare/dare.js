@@ -2,9 +2,9 @@ import fastify from 'fastify';
 import request from 'superagent';
 import CacheModule from 'cache-service-cache-module';
 import superagentCachePlugin from 'superagent-cache-plugin';
-import LoginRequestView from '../views/requests/dare';
-import Client from '../models/client';
-import Policy from '../models/policy';
+import LoginRequestView from '../../views/requests/dare';
+import Client from '../../models/client';
+import Policy from '../../models/policy';
 
 const cache = new CacheModule({ storage: 'local' });
 const superagentCache = superagentCachePlugin(cache);
@@ -12,7 +12,7 @@ const dareEndpoint = 'dare-nodejs-assessment.herokuapp.com/api';
 const Fastify = fastify({ logger: true });
 
 const convert = (res, Obj) => {
-  if (res.statusCode === 401 && res.body.message === 'Authorization token expired') {
+  if (res.statusCode === 401) {
     return false;
   }
 

@@ -1,4 +1,4 @@
-const BadRequestView = (msg = 'Bad request') => ({
+const BadRequestView = (msg) => ({
   code: 400,
   message: msg,
 });

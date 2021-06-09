@@ -1,4 +1,4 @@
-import LoginController from '../controllers/login';
+import LoginController from '../controllers/login/login';
 
 const loginRoutes = async (fastify, _options) => {
   fastify.post('/login', { preHandler: fastify.dareMiddleware }, async (request, response) => {

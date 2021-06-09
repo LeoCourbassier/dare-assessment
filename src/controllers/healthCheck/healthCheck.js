@@ -1,4 +1,4 @@
-import HealthCheckView from '../views/responses/healthCheck';
+import HealthCheckView from '../../views/responses/healthCheck';
 
 export default class HealthCheckController {
   static get(_request, response) {

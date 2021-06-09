@@ -13,3 +13,4 @@ const GetClientsView = (client, policies) => ({
 });
 
 export default GetClientsView;
+export { GetClientsPolicyView };
