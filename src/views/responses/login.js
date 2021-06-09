@@ -1,4 +1,4 @@
-const TokenView = (token, expires = 3600) => ({
+const TokenView = (token, expires) => ({
   token,
   type: 'Bearer',
   expires_in: expires,
