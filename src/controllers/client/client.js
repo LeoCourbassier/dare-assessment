@@ -1,8 +1,8 @@
-import { ADMIN_ROLE } from '../models/role';
-import Dare from './dare';
-import GetClientsView from '../views/responses/client';
-import Paginate from '../pagination';
-import { NotFoundView } from '../views/responses/errors';
+import { ADMIN_ROLE } from '../../models/role';
+import Dare from '../dare/dare';
+import GetClientsView from '../../views/responses/client';
+import Paginate from '../../pagination';
+import { NotFoundView } from '../../views/responses/errors';
 
 export default class ClientController {
   static getByName(request, response) {
@@ -14,31 +14,30 @@ export default class ClientController {
     let name = false;
     let page = 1;
     if (request.query) {
-      if (request.query.limit) limit = request.query.limit;
+      if (request.query.limit && request.query.limit > 0) limit = request.query.limit;
       if (request.query.name) name = request.query.name;
       if (request.query.page) page = request.query.page;
     }
 
     let { clients } = Dare.getInstance();
     const { policies } = Dare.getInstance();
-    const pagination = Paginate(
-      Math.floor(+clients.length / Math.min(clients.length, limit)), page,
-    );
 
     if (name) {
       clients = clients.filter((c) => c.name === name);
     }
 
-    if (limit) {
-      const pageItems = (+pagination.page - 1) * +limit;
-      clients = clients.slice(pageItems, +pageItems + +limit);
+    if (clients.length === 0) {
+      return response
+        .code(404)
+        .send(NotFoundView('No clients matched the filter'));
     }
 
-    if (!clients) {
-      return response
-        .code(200)
-        .send(clients);
-    }
+    const pagination = Paginate(
+      Math.floor(+clients.length / Math.min(clients.length, limit)), page,
+    );
+
+    const pageItems = (+pagination.page - 1) * +limit;
+    clients = clients.slice(pageItems, +pageItems + +limit);
 
     const res = clients.map((c) => GetClientsView(c, policies));
 
@@ -84,12 +83,12 @@ export default class ClientController {
           .send(NotFoundView(`Client with id:${id} not found`));
       }
 
-      policy = Dare.getInstance().policies.find((p) => p.clientId === client.id);
+      policy = Dare.getInstance().policies.filter((p) => p.clientId === client.id);
     } else {
-      policy = Dare.getInstance().policies.find((p) => p.clientId === id);
+      policy = Dare.getInstance().policies.filter((p) => p.clientId === id);
     }
 
-    if (!policy) {
+    if (policy.length === 0) {
       return response
         .code(404)
         .send(NotFoundView(`Policy for client with id:${id} not found`));
@@ -97,6 +96,6 @@ export default class ClientController {
 
     return response
       .code(200)
-      .send([policy]);
+      .send(policy);
   }
 }

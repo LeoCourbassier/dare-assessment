@@ -1,8 +1,8 @@
-import { ADMIN_ROLE } from '../models/role';
-import Dare from './dare';
-import Paginate from '../pagination';
-import { NotFoundView, UnauthorizedView } from '../views/responses/errors';
-import GetPoliciesView from '../views/responses/policy';
+import { ADMIN_ROLE } from '../../models/role';
+import Dare from '../dare/dare';
+import Paginate from '../../pagination';
+import { NotFoundView, UnauthorizedView } from '../../views/responses/errors';
+import GetPoliciesView from '../../views/responses/policy';
 
 export default class PolicyController {
   static get(request, response) {
@@ -13,7 +13,7 @@ export default class PolicyController {
     let limit = 10;
     let page = 1;
     if (request.query) {
-      if (request.query.limit) limit = request.query.limit;
+      if (request.query.limit && request.query.limit > 0) limit = request.query.limit;
       if (request.query.page) page = request.query.page;
     }
 
@@ -22,16 +22,14 @@ export default class PolicyController {
       Math.floor(+policies.length / Math.min(policies.length, limit)), page,
     );
 
-    if (limit) {
-      const pageItems = (+pagination.page - 1) * +limit;
-      policies = policies.slice(pageItems, +pageItems + +limit);
-    }
-
-    if (!policies) {
+    if (policies.length === 0) {
       return response
         .code(200)
         .send(policies);
     }
+
+    const pageItems = (+pagination.page - 1) * +limit;
+    policies = policies.slice(pageItems, +pageItems + +limit);
 
     policies = policies.map((p) => GetPoliciesView(p));
 
